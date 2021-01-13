@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="feature_flag">
+            <group id="anonymise_guest_data" translate="label" type="text" sortOrder="200" showInDefault="1">
+                <label>Anonymise Guest Data</label>
+                <field id="guest_data_anonymisation" translate="label comment" type="feature_flag" sortOrder="200" showInDefault="1">
+                    <label><![CDATA[Anonymise Guest Data]]></label>
+                    <comment><![CDATA[When enabled, the two guest data anonymization cron jobs will run nightly.]]></comment>
+                </field>
+            </group>
+        </section>
+        <section id="toom_general">
+            <tab>toom</tab>
+            <group id="anonymise_guest_data" translate="label" type="text" sortOrder="100" showInDefault="1">
+                <label>Anonymise Guest Data</label>
+                <field id="general_case_time" translate="label" type="text" sortOrder="100" showInDefault="1">
+                    <label>General Data Retention Time</label>
+                    <comment><![CDATA[Number of days until general data is anonymised, it's equal 180 by default.]]></comment>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="other_case_time" translate="label" type="text" sortOrder="110" showInDefault="1">
+                    <label>Retention Time For Other Case</label>
+                    <comment><![CDATA[Number of days until data is automatically anonymised for Other Case, it's equal 180 by default.]]></comment>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

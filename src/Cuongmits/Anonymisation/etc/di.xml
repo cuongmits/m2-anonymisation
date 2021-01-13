@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="toom_anonymise_other_guest_data" xsi:type="object">
+                    Cuongmits\Anonymisation\Console\Command\AnonymiseOtherDataCommand
+                </item>
+                <item name="toom_anonymise_general_guest_data" xsi:type="object">
+                    Cuongmits\Anonymisation\Console\Command\AnonymiseGeneralDataCommand
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Cuongmits\Anonymisation\Anonymiser\QuoteRelatedAnonymiser">
+        <arguments>
+            <argument name="anonymisers" xsi:type="array">
+                <item name="quote" xsi:type="object">Cuongmits\Anonymisation\Anonymiser\Entity\Quote</item>
+                <item name="quote_payment" xsi:type="object">Cuongmits\Anonymisation\Anonymiser\Entity\QuotePayment</item>
+                <item name="quote_address" xsi:type="object">Cuongmits\Anonymisation\Anonymiser\Entity\QuoteAddress</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Cuongmits\Anonymisation\Anonymiser\OrderRelatedAnonymiser">
+        <arguments>
+            <argument name="anonymisers" xsi:type="array">
+                <item name="order" xsi:type="object">Cuongmits\Anonymisation\Anonymiser\Entity\Order</item>
+                <item name="order_payment" xsi:type="object">Cuongmits\Anonymisation\Anonymiser\Entity\OrderPayment</item>
+                <item name="order_address" xsi:type="object">Cuongmits\Anonymisation\Anonymiser\Entity\OrderAddress</item>
+                <item name="invoice" xsi:type="object">Cuongmits\Anonymisation\Anonymiser\Entity\Invoice</item>
+                <item name="shipment" xsi:type="object">Cuongmits\Anonymisation\Anonymiser\Entity\Shipment</item>
+                <item name="shipment_track" xsi:type="object">Cuongmits\Anonymisation\Anonymiser\Entity\ShipmentTrack</item>
+                <item name="credit_memo" xsi:type="object">Cuongmits\Anonymisation\Anonymiser\Entity\CreditMemo</item>
+                <item name="grids" xsi:type="object">Cuongmits\Anonymisation\Anonymiser\Entity\Grids</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Cuongmits\Anonymisation\Anonymiser\Entity\Grids">
+        <arguments>
+            <argument name="gridPool" xsi:type="object">Magento\Sales\Model\ResourceModel\GridPool</argument>
+        </arguments>
+    </type>
+    <type name="Tkotosz\CommandScheduler\Model\AllowedCommandsContainer">
+        <arguments>
+            <argument name="allowedCommands" xsi:type="array">
+                <item name="Run General Anonymisation" xsi:type="string">toom:anonymise-general-data</item>
+                <item name="Run Other Anonymisation" xsi:type="string">toom:anonymise-other-data</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

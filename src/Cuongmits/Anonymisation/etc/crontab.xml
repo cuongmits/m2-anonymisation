@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="toom_anonymisation">
+        <job name="toom_anonymisation_anonymise_other_guest_data"
+             instance="Cuongmits\Anonymisation\Anonymiser\OtherAnonymiser" method="run">
+            <schedule>40 0 * * *</schedule>
+        </job>
+        <job name="toom_anonymisation_anonymise_general_guest_data"
+             instance="Cuongmits\Anonymisation\Anonymiser\GeneralAnonymiser" method="run">
+            <schedule>50 0 * * *</schedule>
+        </job>
+    </group>
+</config>
